@@ -1,0 +1,49 @@
+*{
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+}
+html,body{
+    width: 100%;
+    background-color: blue;
+}
+
+#container{
+    display: flex-box;
+    background-color: red;
+    float: none;
+    width: 100%;
+}
+
+#content{
+    background-color: pink;
+    width: 100%;
+}
+
+#mybuild{
+    display: flex-box;
+    background-color: orange;
+    width: 100%;
+}
+
+#partslist{
+    display: flex-box;
+    background-color: grey;
+    width: 100%;
+}
+
+#myinfo{
+    display: flex-box;
+    background-color: purple;
+    width: 100%;
+}
+#partsentry{
+    background-color: white;
+    width: 20em;
+    height: 10em;
+}
+.nav{
+    background-color: green;
+    width: 100%;
+}
