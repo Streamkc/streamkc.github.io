@@ -3,7 +3,6 @@ const {join}= require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports={
-   // mode: 'production',
     mode: 'development',
     entry: join(__dirname, '/src', 'index.js'),
     output:{
@@ -12,12 +11,15 @@ module.exports={
     },
     plugins:[
         new HtmlWebpackPlugin({
-            //template:'./public/index.html'
             template:'./index.html'
         }),
     ],
     devServer:{
-        static: "./dist",
+        static: {
+            directory: path.resolve(__dirname,"./public"),
+        },
+        devMiddleware:{
+        },
         open: true,
     },
     module:{
@@ -37,7 +39,13 @@ module.exports={
             test: /\.css$/i,
             use: ['style-loader','css-loader'],
             exclude: /node_modules/,
-        }],
+        },
+        {
+            test: /\.json&/,
+            loader: 'json-loader',
+            exclude: /node_modules/,
+        }
+        ],
     },
     resolve:{
         modules: [__dirname, 'src', 'node_modules'],

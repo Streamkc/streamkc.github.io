@@ -1,12 +1,16 @@
-import React from 'react'
+import React from 'react';
+import {lazy} from 'react';
+import {Pcbuild, Pcpartpicker, Pcpartslist} from './pcbuilder.js';
 
-function Nav(){
+const Nav= ()=>{
     let pageshown="mybuild";
 
     const showpage = (name)=>{
+
         const buildpage= document.getElementById('mybuild');
         const partslistpage= document.getElementById('partslist');
         const myinfo = document.getElementById('myinfo');
+
         if(name === "mybuild"){
             buildpage.style.display= "block";
             partslistpage.style.display= "none";
@@ -28,110 +32,125 @@ function Nav(){
     <div className="nav"> 
         <ol>
             <li>
-            <a href="#mybuid" onClick={()=>showpage("mybuild")}>My Build</a> 
+            <a href="#mybuid" onClick={()=>showpage("mybuild")}>
+            My Build
+            </a> 
             </li>
             <li>  
-            <a href="#partslist" onClick={()=>showpage("partslist")}>Parts</a> 
+            <a href="#partslist" onClick={()=>showpage("partslist")}>
+            Parts
+            </a> 
             </li>
             <li> 
-            <a href="#partslist" onClick={()=>showpage("myinfo")}>My Info</a> 
+            <a href="#myinfo" onClick={()=>showpage("myinfo")}>My Info</a> 
             </li>
         </ol>
     </div>
     );
 }
 
-function Banner(){
+const Banner= ()=>{
     return(
-        <div className="banner">
+        <div id="banner">
         <h1>My PC Build</h1>
         </div>
     );
 }
 
-function Pcparts(){
+const Footer= ()=>{
+    const style={ 
+        display: "flex",
+        flexDirection: "row",
+    };
+    const colstyle={ 
+        flex: 1,
+    };
+
     return(
-        <div id="partsentry">
-            <h3>item1</h3>
-            <div>type</div>
-            <div>Name</div>
+        <div id="footer" style={style}>
+
+        <div style={colstyle} >
+        <ul>
+            <li><a href="https://www.google.com" >Google</a></li>
+            <li><a href="https://www.facebook.com" >Facebook</a></li>
+            <li><a href="https://www.instagram.com" >Instagram</a></li>
+        </ul>
+        </div>
+
+        <div style={colstyle} >
+        <ul>
+            <li><a href="https://www.google.com" >Google</a></li>
+            <li><a href="https://www.facebook.com" >Facebook</a></li>
+            <li><a href="https://www.instagram.com" >Instagram</a></li>
+        </ul>
+        </div>
+
+        <div style={colstyle} >
+        <ul>
+            <li><a href="https://www.google.com" >Google</a></li>
+            <li><a href="https://www.facebook.com" >Facebook</a></li>
+            <li><a href="https://www.instagram.com" >Instagram</a></li>
+        </ul>
+        </div>
+
         </div>
     );
 }
 
-function Pcbuild(){
-    return(
-    <div id="mybuild">
-        <h2> My Build </h2>
-        <ol>
-            <li>
-            <h3>CPU</h3>
-            <Pcparts />
-            </li>
-            <li>
-            <h3>Motherboard</h3>
-            <Pcparts />
-            </li>
-            <li>
-            <h3>RAM</h3>
-            <Pcparts />
-            </li>
-            <li>
-            <h3>Power Supply</h3>
-            <Pcparts />
-            </li>
-            <li>
-            <h3>GPU</h3>
-            <Pcparts />
-            </li>
-        </ol>
-    </div>
-    );
-}
+const Myinfo= ()=>{
+    const style={ }
 
-function Partslist(){
-    return(
-    <div id="partslist">
-        <h2> Parts List </h2>
-        <ol>
-            <li>
-            <Pcparts />
-            </li>
-            <li>  
-            <Pcparts />
-            </li>
-            <li> 
-            <Pcparts />
-            </li>
-        </ol>
-    </div>
-    );
-}
-
-function Myinfo(){
     return(
     <div id="myinfo">
-    <h3> I am here </h3>
+        <div>
+        <h3>Info for tech used </h3>
+        </div>
+        <div>
+        React js for component rendering.
+        </div>
+        <div>
+        Single CSS file is used for styling
+        </div>
+        <div>
+        Webpack for bundling js.
+        </div>
+        
+        <div>
+        <pre>
+        Todo: 
+        public path to be exposed;
+
+        fetch API need CORS support;
+        </pre>
+        </div>
     </div>
     );
 }
 
-function Content(){
+const Content= ()=>{
     return(
     <div id="content">
-    <Pcbuild />
-    <Partslist />
-    <Myinfo />
+        <Pcbuild />
+        <Pcpartpicker />
+        <Pcpartslist />
     </div>
     );
 }
 
-function App(){
+const App= ()=>{
+
+    const onunloadevent= (event)=>{
+        event.preventDefault();    
+    }
+    window.onbeforeunload=onunloadevent;
+
     return (
         <div id="container">
-        <Banner />
-        <Nav/>
-        <Content />
+            <Banner />
+            <Nav/>
+            <Content />
+            <Myinfo />
+            <Footer />
         </div>
     )
 }
