@@ -1,5 +1,5 @@
 import React from 'react';
-import cpulist from 'cpu.json';
+import {useState, useEffect, useCallback, useMemo} from 'react';
 
 const Pcpartstable= ({list})=>{
 
@@ -28,7 +28,7 @@ const Pcpartpicker= ()=>{
         width: "100%",
         overflow: "scroll",
     };
-
+    const cpulist=[];
     const list= cpulist.map((item, i)=>({
         ...item, id:i+1
     }));
@@ -36,10 +36,8 @@ const Pcpartpicker= ()=>{
     const onclickevent= ()=>{
         const searchbar= document.getElementById("searchinput");
         const name= searchbar.value;
-        console.log(name);
         const filterlist= list?.filter((entry)=>entry.name.includes(name)); 
         list=filterlist;
-        console.log(filterlist);
     }
 
     return(

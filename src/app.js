@@ -1,9 +1,12 @@
 import React from 'react';
-import {lazy} from 'react';
+import {useRef ,useState, useEffect, useMemo} from 'react';
 import {Pcbuild, Pcpartpicker, Pcpartslist} from './pcbuilder.js';
 
 const Nav= ()=>{
     let pageshown="mybuild";
+    const buildpageRef= useRef(null);
+    const partslistpageRef= useRef(null);
+    const myinfopageRef= useRef(null);
 
     const showpage = (name)=>{
 
@@ -15,16 +18,31 @@ const Nav= ()=>{
             buildpage.style.display= "block";
             partslistpage.style.display= "none";
             myinfo.style.display= "none";
+            /*
+            buildpageRef.current.style.display= "block";
+            partslistpageRef.current.style.display= "none";
+            myinfopageRef.current.style.display= "none";
+            */
         }else
         if(name === "partslist"){
             buildpage.style.display= "none";
             partslistpage.style.display= "block";
             myinfo.style.display= "none";
+            /*
+            buildpageRef.current.style.display= "none";
+            partslistpageRef.current.style.display= "block";
+            myinfopageRef.current.style.display= "none";
+            */
         }else
         if(name === "myinfo"){
             buildpage.style.display= "none";
             partslistpage.style.display= "none";
             myinfo.style.display= "block";
+            /*
+            buildpageRef.current.style.display= "none";
+            partslistpageRef.current.style.display= "none";
+            myinfopageRef.current.style.display= "block";
+            */
         }
     }
 
@@ -32,17 +50,17 @@ const Nav= ()=>{
     <div className="nav"> 
         <ol>
             <li>
-            <a href="#mybuid" onClick={()=>showpage("mybuild")}>
+            <a ref={buildpageRef} href="#mybuid" onClick={()=>showpage("mybuild")}>
             My Build
             </a> 
             </li>
             <li>  
-            <a href="#partslist" onClick={()=>showpage("partslist")}>
+            <a ref={partslistpageRef} href="#partslist" onClick={()=>showpage("partslist")}>
             Parts
             </a> 
             </li>
             <li> 
-            <a href="#myinfo" onClick={()=>showpage("myinfo")}>My Info</a> 
+            <a ref={myinfopageRef} href="#myinfo" onClick={()=>showpage("myinfo")}>My Info</a> 
             </li>
         </ol>
     </div>
@@ -98,31 +116,33 @@ const Footer= ()=>{
 }
 
 const Myinfo= ()=>{
-    const style={ }
 
     return(
     <div id="myinfo">
-        <div>
-        <h3>Info for tech used </h3>
+        <div> <h3>Info for tech used </h3>
         </div>
-        <div>
-        React js for component rendering.
-        </div>
-        <div>
-        Single CSS file is used for styling
-        </div>
-        <div>
-        Webpack for bundling js.
-        </div>
-        
-        <div>
-        <pre>
-        Todo: 
-        public path to be exposed;
 
-        fetch API need CORS support;
-        </pre>
+        <ol>
+        <div> React js for component rendering.
         </div>
+        <div> Single CSS file is used for styling
+        </div>
+        <div> Webpack for bundling js.
+        </div>
+        <div> public path exposed;
+        </div>
+        <div> fetch json file from public path;
+        </div>
+        <div> public path is inconsistent bewteen dev and prod fixed 
+        </div>
+        <div> TODO:
+        </div>
+        <div> include redux and ant design? 
+        </div>
+        <div> 
+        </div>
+        </ol>
+        
     </div>
     );
 }

@@ -8,6 +8,7 @@ module.exports={
     output:{
         filename:'main.bundle.js',
         path: path.resolve(__dirname, 'dist'),
+        publicPath: '/',
     },
     plugins:[
         new HtmlWebpackPlugin({
@@ -16,7 +17,7 @@ module.exports={
     ],
     devServer:{
         static: {
-            directory: path.resolve(__dirname,"./public"),
+            directory: path.resolve(__dirname,"./"),
         },
         devMiddleware:{
         },
